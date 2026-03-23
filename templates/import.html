@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Import Events - Concert & Event Tracker</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="/static/styles.css" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="/static/flavicon.svg">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <i class="bi bi-calendar-event me-2"></i>Event Tracker
+      </a>
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link" href="/">
+          <i class="bi bi-arrow-left me-1"></i>Back to Events
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container py-4 import-page">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <h2 class="mb-4">
+          <i class="bi bi-download me-2"></i>Import Events
+        </h2>
+
+        {% if error %}
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="bi bi-exclamation-triangle me-2"></i>{{ error }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+          </div>
+        {% endif %}
+
+        <div class="row g-4 mb-4">
+          <div class="col-md-6">
+            <div class="card import-option h-100">
+              <div class="card-body text-center p-4">
+                <div class="import-icon ticketswap-icon mx-auto">
+                  <i class="bi bi-ticket-perforated-fill fs-3"></i>
+                </div>
+                <h5>TicketSwap</h5>
+                <p class="text-muted small">Import events from TicketSwap.nl</p>
+                <form action="/import/ticketswap" method="POST" class="mt-3">
+                  <div class="mb-3">
+                    <input type="url" class="form-control" name="url" placeholder="https://www.ticketswap.nl/e/..." required>
+                  </div>
+                  <button type="submit" class="btn btn-primary w-100">
+                    <i class="bi bi-download me-1"></i>Import from TicketSwap
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="card import-option h-100">
+              <div class="card-body text-center p-4">
+                <div class="import-icon ticketmaster-icon mx-auto">
+                  <i class="bi bi-ticket-fill fs-3"></i>
+                </div>
+                <h5>Ticketmaster</h5>
+                <p class="text-muted small">Import events from Ticketmaster</p>
+                <form action="/import/ticketmaster" method="POST" class="mt-3">
+                  <div class="mb-3">
+                    <input type="url" class="form-control" name="url" placeholder="https://www.ticketmaster.nl/event/..." required>
+                  </div>
+                  <button type="submit" class="btn btn-primary w-100">
+                    <i class="bi bi-download me-1"></i>Import from Ticketmaster
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <h5><i class="bi bi-info-circle me-2"></i>How it works</h5>
+            <ol class="text-muted mb-0">
+              <li>Copy the URL of an event from TicketSwap or Ticketmaster</li>
+              <li>Paste the URL in the appropriate form above</li>
+              <li>Click Import to automatically extract event details</li>
+              <li>The event will be added to your tracker with all available information</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="card mt-4">
+          <div class="card-body">
+            <h5><i class="bi bi-lightbulb me-2"></i>Supported Information</h5>
+            <div class="row g-3 mt-2">
+              <div class="col-md-6">
+                <ul class="text-muted mb-0">
+                  <li>Event name and type</li>
+                  <li>Venue and location</li>
+                  <li>Date and time</li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <ul class="text-muted mb-0">
+                  <li>Price and currency</li>
+                  <li>Original ticket URL</li>
+                  <li>Source attribution</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

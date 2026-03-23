@@ -1,0 +1,17 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: event-tracker
+    volumes:
+      - ./data:/app/data
+    environment:
+      - FLASK_ENV=production
+      - DATABASE_PATH=/app/data/events.db
+    ports:
+      - "5002:5000"
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
+    restart: unless-stopped

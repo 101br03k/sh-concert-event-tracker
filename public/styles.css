@@ -1,0 +1,221 @@
+:root {
+  --primary-color: #6366f1;
+  --secondary-color: #8b5cf6;
+  --dark-bg: #1e1e2e;
+  --card-bg: #2a2a3e;
+}
+
+body {
+  background: linear-gradient(135deg, var(--dark-bg) 0%, #2a2a3e 100%);
+  min-height: 100vh;
+  color: #fff;
+}
+
+.navbar {
+  background: rgba(30, 30, 46, 0.95) !important;
+  backdrop-filter: blur(10px);
+}
+
+.navbar-brand {
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav-link {
+  color: #a0a0b0 !important;
+  transition: color 0.3s;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--primary-color) !important;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  color: #fff;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 40px rgba(99, 102, 241, 0.2);
+}
+
+.card-body, .card-title, .card-text, .card-footer {
+  color: #fff;
+}
+
+.card-text p {
+  color: #c0c0d0 !important;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border: none;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+.event-type-badge {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+}
+
+.type-concert {
+  background: linear-gradient(135deg, #f43f5e, #ec4899);
+}
+
+.type-show {
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+}
+
+.type-event {
+  background: linear-gradient(135deg, #10b981, #14b8a6);
+}
+
+.type-sports {
+  background: linear-gradient(135deg, #f59e0b, #f97316);
+}
+
+.status-planned {
+  color: #60a5fa;
+}
+
+.status-attended {
+  color: #34d399;
+}
+
+.status-missed {
+  color: #f87171;
+}
+
+.form-control, .form-select {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.form-control:focus, .form-select:focus {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--primary-color);
+  color: #fff;
+  box-shadow: 0 0 0 0.25rem rgba(99, 102, 241, 0.25);
+}
+
+option{
+  background: #353548;
+}
+
+.form-label {
+  color: #a0a0b0;
+}
+
+.table {
+  color: #fff;
+}
+
+.table-dark {
+  --bs-table-bg: transparent;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #808090;
+}
+
+.empty-state i {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  color: #606070;
+}
+
+.empty-state h4 {
+  color: #a0a0b0;
+}
+
+.empty-state p {
+  color: #808090;
+}
+
+/* Import page styles */
+.import-option {
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.import-option:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary-color);
+}
+
+.import-icon {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+.ticketswap-icon {
+  background: linear-gradient(135deg, #00d4aa, #00b894);
+}
+
+.ticketmaster-icon {
+  background: linear-gradient(135deg, #026cdf, #0056b3);
+}
+
+/* Dropdown styles */
+.dropdown-menu {
+  background: var(--card-bg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-item {
+  color: #fff;
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+  background: rgba(99, 102, 241, 0.2);
+  color: #fff;
+}
+
+.dropdown-divider {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Import page styles */
+.import-page h2, .import-page h5 {
+  color: #fff;
+}
+
+.import-page .text-muted {
+  color: #a0a0b0 !important;
+}
+
+.import-page .card h5 {
+  color: #fff;
+}
+
+.import-page .card ul li, .import-page .card ol li {
+  color: #c0c0d0;
+}
+
+/* Companion badges */
+.card .badge {
+  /*background: rgba(255, 255, 255, 0.2) !important;*/
+  color: #fff !important;
+  font-weight: 400;
+}
+
+.companion {
+  background: linear-gradient(135deg, rgb(99, 102, 241), rgb(139, 92, 246));
+}

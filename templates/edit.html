@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Event - Concert & Event Tracker</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="/static/styles.css" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="/static/flavicon.svg">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <i class="bi bi-calendar-event me-2"></i>Event Tracker
+      </a>
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link" href="/">
+          <i class="bi bi-arrow-left me-1"></i>Back to Events
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container py-4">
+    {% if error %}
+      <div class="alert alert-danger alert-dismissible fade show mb-4" role="alert">
+        <i class="bi bi-exclamation-triangle me-2"></i>{{ error }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      </div>
+    {% endif %}
+
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="card">
+          <div class="card-body p-4">
+            <h2 class="mb-4">
+              <i class="bi bi-pencil-square me-2"></i>Edit Event
+            </h2>
+
+            <form action="/events/{{ event.id }}/edit" method="POST">
+              <div class="row g-3">
+                <div class="col-12">
+                  <label class="form-label">Event Name *</label>
+                  <input type="text" class="form-control" name="name" value="{{ event.name }}" required>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Event Type *</label>
+                  <select class="form-select" name="type" required>
+                    <option value="concert" {{ 'selected' if event.type == 'concert' else '' }}>Concert</option>
+                    <option value="show" {{ 'selected' if event.type == 'show' else '' }}>Show</option>
+                    <option value="event" {{ 'selected' if event.type == 'event' else '' }}>Event</option>
+                    <option value="sports" {{ 'selected' if event.type == 'sports' else '' }}>Sports</option>
+                  </select>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Status</label>
+                  <select class="form-select" name="status">
+                    <option value="planned" {{ 'selected' if event.status == 'planned' else '' }}>Planned</option>
+                    <option value="attended" {{ 'selected' if event.status == 'attended' else '' }}>Attended</option>
+                    <option value="missed" {{ 'selected' if event.status == 'missed' else '' }}>Missed</option>
+                  </select>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Venue</label>
+                  <input type="text" class="form-control" name="venue" value="{{ event.venue or '' }}">
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">City</label>
+                  <input type="text" class="form-control" name="city" value="{{ event.city or '' }}">
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Date</label>
+                  <input type="date" class="form-control" name="date" value="{{ event.date or '' }}">
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Time</label>
+                  <input type="time" class="form-control" name="time" value="{{ event.time or '' }}">
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Price</label>
+                  <input type="number" step="0.01" class="form-control" name="price" value="{{ event.price or '' }}">
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Currency</label>
+                  <select class="form-select" name="currency">
+                    <option value="EUR" {{ 'selected' if (event.currency or 'EUR') == 'EUR' else '' }}>EUR (€)</option>
+                    <option value="USD" {{ 'selected' if event.currency == 'USD' else '' }}>USD ($)</option>
+                    <option value="GBP" {{ 'selected' if event.currency == 'GBP' else '' }}>GBP (£)</option>
+                  </select>
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label">Went With</label>
+                  <textarea class="form-control" name="companions" rows="2" placeholder="Enter names separated by commas (e.g., Alice, Bob, Charlie)">{{ event.companions or '' }}</textarea>
+                  <small class="text-muted">Separate multiple names with commas</small>
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label">Ticket URL</label>
+                  <input type="url" class="form-control" name="url" value="{{ event.url or '' }}" placeholder="https://...">
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label">Notes</label>
+                  <textarea class="form-control" name="notes" rows="3">{{ event.notes or '' }}</textarea>
+                </div>
+
+                <div class="col-12 mt-4">
+                  <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-check-lg me-2"></i>Save Changes
+                  </button>
+                  <a href="/" class="btn btn-outline-secondary ms-2">Cancel</a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

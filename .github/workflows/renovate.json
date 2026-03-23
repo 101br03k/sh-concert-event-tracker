@@ -1,0 +1,17 @@
+{
+  "labels": ["dependencies"],
+  "packageRules": [
+    {
+      "matchPackagePatterns": ["^eslint"],
+      "addLabels": ["linting"]
+    },
+    {
+      "matchDepTypes": ["optionalDependencies"],
+      "addLabels": ["optional"]
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["python"]
+    }
+  ]
+}
